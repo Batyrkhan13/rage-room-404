@@ -469,6 +469,7 @@ body.no-scroll { overflow: hidden; }
 .price__value { font: 700 46px/1 var(--f-display); display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; }
 .price__value .ph { font-weight: 700; }
 .price__value .cur { color: var(--muted); font-size: 28px; }
+.price__value .per { font: 600 13px/1 var(--f-body); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
 .price__meta { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); margin: 0; }
 .price__meta div { background: var(--bg-2); padding: 10px 12px; }
 .price__meta dt { font-size: 11px; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); margin-bottom: 4px; }
