@@ -711,7 +711,47 @@ body.no-scroll { overflow: hidden; }
 .qa p { padding: 0 0 20px; color: var(--muted); }
 
 /* ---------- 8. Reviews ---------- */
-.reviews__grid { display: grid; gap: 12px; }
+/* видеоотзывы: на телефоне — горизонтальная лента со «щелчком» */
+.reviews__lead { color: var(--muted); margin: -12px 0 24px; }
+.reviews__grid {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 72%;
+  gap: 12px;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  margin: 0 calc(-1 * var(--gutter));
+  padding: 0 var(--gutter) 8px;
+  scroll-padding: 0 var(--gutter);
+  scrollbar-width: none;
+}
+.reviews__grid::-webkit-scrollbar { display: none; }
+.vreview { margin: 0; scroll-snap-align: start; }
+.vreview__frame {
+  position: relative;
+  aspect-ratio: 464 / 848;
+  overflow: hidden;
+  background: #000;
+  border: 1px solid var(--line);
+}
+.vreview__frame video { width: 100%; height: 100%; object-fit: cover; display: block; }
+.vplay {
+  position: absolute; inset: 0; margin: auto;
+  width: 76px; height: 76px; border-radius: 50%;
+  display: grid; place-items: center;
+  color: #fff; background: rgba(255, 58, 47, .92);
+  border: 0; cursor: pointer;
+  box-shadow: 0 0 0 10px rgba(255,58,47,.22), 0 10px 30px rgba(0,0,0,.5);
+  transition: transform .2s var(--ease), opacity .2s, background-color .2s;
+}
+.vplay svg { translate: 2px 0; }
+.vplay:hover { transform: scale(1.08); background: var(--red); }
+.vreview.is-playing .vplay { opacity: 0; transform: scale(.7); pointer-events: none; }
+.vreview figcaption {
+  display: flex; justify-content: space-between; align-items: baseline; gap: 12px;
+  margin-top: 10px; font-size: 15px;
+}
+.vreview figcaption span { color: var(--muted); font: 600 13px/1 ui-monospace, Consolas, monospace; }
 .review {
   margin: 0;
   padding: 24px 20px;
@@ -848,8 +888,14 @@ body.no-scroll { overflow: hidden; }
   .hero__media { height: 56svh; max-height: 640px; }
   .hero__title { font-size: clamp(56px, 9vw, 96px); }
   .facts { grid-template-columns: repeat(4, 1fr); }
-  .formats__grid,
-  .reviews__grid { grid-template-columns: repeat(3, 1fr); }
+  .formats__grid { grid-template-columns: repeat(3, 1fr); }
+  .reviews__grid {
+    grid-auto-flow: row;
+    grid-template-columns: repeat(3, 1fr);
+    overflow: visible;
+    margin: 0;
+    padding: 0;
+  }
   .prices__grid { grid-template-columns: repeat(2, 1fr); }
   .price--vip { grid-column: 1 / -1; }
   .feature--side { grid-template-columns: 200px 1fr; gap: 24px; align-items: center; }
@@ -926,6 +972,8 @@ body.no-scroll { overflow: hidden; }
   .process .h2 { max-width: 18ch; }
   .steps { margin: 0; }
   .video { position: sticky; top: calc(var(--header-h) + 24px); align-self: start; }
+
+  .reviews__grid { max-width: 960px; gap: 20px; }
 
   .gear__stage { grid-template-columns: 1fr minmax(320px, 380px) 1fr; gap: 40px; align-items: center; }
   .gear__figure { order: 0; width: 100%; margin: 0; }

@@ -631,30 +631,54 @@
       </div>
     </section>
 
-    <!-- ============ 8. ОТЗЫВЫ ============ -->
+    <!-- ============ 8. ОТЗЫВЫ (видео) ============ -->
     <section class="section reviews" id="reviews" aria-labelledby="reviews-title">
       <div class="wrap">
         <p class="eyebrow"><span class="code">LOG</span> Отзывы гостей</p>
         <h2 class="h2" id="reviews-title">Что говорят после сеанса</h2>
-        <p class="note">Вставьте только реальные отзывы со ссылкой на источник. Если отзывов пока нет — удалите блок.</p>
+        <p class="reviews__lead">Без сценария — сразу после того, как дверь открылась.</p>
+
         <div class="reviews__grid">
-          <blockquote class="review reveal">
-            <p><span class="ph">[ТЕКСТ РЕАЛЬНОГО ОТЗЫВА]</span></p>
-            <footer><span class="ph">[ИМЯ]</span> · <span class="ph">[ИСТОЧНИК: 2ГИС / Google / Instagram]</span></footer>
-          </blockquote>
-          <blockquote class="review reveal">
-            <p><span class="ph">[ТЕКСТ РЕАЛЬНОГО ОТЗЫВА]</span></p>
-            <footer><span class="ph">[ИМЯ]</span> · <span class="ph">[ИСТОЧНИК]</span></footer>
-          </blockquote>
-          <blockquote class="review reveal">
-            <p><span class="ph">[ТЕКСТ РЕАЛЬНОГО ОТЗЫВА]</span></p>
-            <footer><span class="ph">[ИМЯ]</span> · <span class="ph">[ИСТОЧНИК]</span></footer>
-          </blockquote>
+          <figure class="vreview reveal">
+            <div class="vreview__frame">
+              <video playsinline preload="none" poster="assets/video/review-1.jpg" width="464" height="848">
+                <source src="assets/video/review-1.mp4" type="video/mp4">
+              </video>
+              <button class="vplay" type="button" aria-label="Смотреть отзыв: вдвоём в экипировке, 35 секунд">
+                <svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <figcaption><b>Вдвоём в экипировке</b><span>0:35</span></figcaption>
+          </figure>
+
+          <figure class="vreview reveal">
+            <div class="vreview__frame">
+              <video playsinline preload="none" poster="assets/video/review-2.jpg" width="464" height="848">
+                <source src="assets/video/review-2.mp4" type="video/mp4">
+              </video>
+              <button class="vplay" type="button" aria-label="Смотреть отзыв: пара после сеанса, 33 секунды">
+                <svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <figcaption><b>Пара после сеанса</b><span>0:33</span></figcaption>
+          </figure>
+
+          <figure class="vreview reveal">
+            <div class="vreview__frame">
+              <video playsinline preload="none" poster="assets/video/review-3.jpg" width="464" height="848">
+                <source src="assets/video/review-3.mp4" type="video/mp4">
+              </video>
+              <button class="vplay" type="button" aria-label="Смотреть отзыв: соло-сеанс, 22 секунды">
+                <svg width="30" height="30" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M8 5v14l11-7z"/></svg>
+              </button>
+            </div>
+            <figcaption><b>Соло-сеанс</b><span>0:22</span></figcaption>
+          </figure>
         </div>
       </div>
     </section>
 
-    <!-- ============ 9. КОНТАКТЫ ============ -->
+<!-- ============ 9. КОНТАКТЫ ============ -->
     <section class="section contacts" id="contacts" aria-labelledby="contacts-title">
       <div class="wrap contacts__wrap">
         <div class="contacts__info reveal">

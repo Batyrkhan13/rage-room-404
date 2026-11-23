@@ -106,8 +106,21 @@ const BOOKING_CONFIG = {
     session.addEventListener('volumechange', syncSound);
   }
 
+  /* ---------- Видеоотзывы: большая кнопка «пуск» по центру ---------- */
+  document.querySelectorAll('.vreview').forEach((card) => {
+    const video = card.querySelector('video');
+    const btn = card.querySelector('.vplay');
+    btn.addEventListener('click', () => {
+      video.controls = true; // после первого запуска — обычная панель управления
+      video.play().catch(() => {});
+    });
+    video.addEventListener('play', () => card.classList.add('is-playing'));
+    video.addEventListener('pause', () => card.classList.remove('is-playing'));
+    video.addEventListener('ended', () => card.classList.remove('is-playing'));
+  });
+
   /* ---------- Видео со звуком: одновременно играет только одно ---------- */
-  const players = document.querySelectorAll('video[controls]');
+  const players = document.querySelectorAll('video:not(.loop)');
   players.forEach((v) => v.addEventListener('play', () => {
     players.forEach((other) => { if (other !== v) other.pause(); });
   }));
