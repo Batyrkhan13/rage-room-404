@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://batyrkhan13.github.io/rage-room-404/sitemap.xml

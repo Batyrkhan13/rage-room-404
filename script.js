@@ -68,6 +68,44 @@ const BOOKING_CONFIG = {
     loops.forEach((v) => vio.observe(v));
   }
 
+  /* ---------- Видео сеанса: само запускается (без звука), когда доходит до экрана ---------- */
+  const session = document.querySelector('#video video');
+  const soundBtn = document.querySelector('.video__sound');
+  if (session) {
+    let pausedByUser = false;
+    let autoPause = false;
+
+    session.addEventListener('pause', () => {
+      if (!autoPause && !session.ended) pausedByUser = true;
+      autoPause = false;
+    });
+    session.addEventListener('play', () => { pausedByUser = false; });
+
+    if ('IntersectionObserver' in window && !reduceMotion) {
+      new IntersectionObserver(([en]) => {
+        if (en.isIntersecting && session.paused && !pausedByUser) {
+          session.muted = session.muted || soundBtn.getAttribute('aria-pressed') !== 'true';
+          session.play().catch(() => {});
+        } else if (!en.isIntersecting && !session.paused) {
+          autoPause = true;
+          session.pause();
+        }
+      }, { threshold: 0.5 }).observe(session);
+    }
+
+    const syncSound = () => {
+      const on = !session.muted;
+      soundBtn.setAttribute('aria-pressed', String(on));
+      soundBtn.querySelector('span').textContent = on ? 'Выключить звук' : 'Включить звук';
+    };
+    soundBtn.addEventListener('click', () => {
+      session.muted = !session.muted;
+      if (!session.muted && session.paused) session.play().catch(() => {});
+      syncSound();
+    });
+    session.addEventListener('volumechange', syncSound);
+  }
+
   /* ---------- Видео со звуком: одновременно играет только одно ---------- */
   const players = document.querySelectorAll('video[controls]');
   players.forEach((v) => v.addEventListener('play', () => {

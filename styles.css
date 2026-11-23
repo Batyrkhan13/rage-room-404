@@ -418,6 +418,17 @@ body.no-scroll { overflow: hidden; }
 }
 .video__frame video,
 .feature__video video { width: 100%; height: 100%; object-fit: contain; background: #000; }
+.video__sound {
+  position: absolute; top: 12px; right: 12px; z-index: 2;
+  display: inline-flex; align-items: center; gap: 8px;
+  min-height: 40px; padding: 0 14px;
+  font: 700 13px/1 var(--f-body); color: #fff;
+  background: rgba(11, 10, 15, .7);
+  border: 1px solid rgba(255,255,255,.3); border-radius: 999px;
+  backdrop-filter: blur(6px);
+  cursor: pointer;
+}
+.video__sound[aria-pressed="true"] { background: var(--red); border-color: var(--red); }
 .video figcaption {
   margin-top: 10px;
   font-size: 12px; letter-spacing: .1em; text-transform: uppercase; color: var(--muted);
@@ -440,12 +451,16 @@ body.no-scroll { overflow: hidden; }
 /* ---------- 5. Prices ---------- */
 .prices__grid { display: grid; gap: 14px; margin-bottom: 28px; }
 .price {
+  --c: var(--red);
   position: relative;
-  display: flex; flex-direction: column; gap: 18px;
-  padding: 26px 20px;
+  display: flex; flex-direction: column; gap: 16px;
+  padding: 24px 20px;
   border: 1px solid var(--line);
-  background: var(--bg-2);
+  border-top: 3px solid var(--c);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--c) 10%, transparent), var(--bg-2) 45%);
 }
+.price .price__name { color: var(--c); }
+.price--max { border-color: rgba(255,255,255,.35); border-top-color: var(--c); }
 .price--accent {
   border-color: var(--red);
   background: linear-gradient(180deg, rgba(255,58,47,.12), var(--bg-2) 60%);
@@ -462,6 +477,21 @@ body.no-scroll { overflow: hidden; }
 .price__list li { position: relative; padding-left: 22px; }
 .price__list li::before { content: ""; position: absolute; left: 0; top: .6em; width: 10px; height: 2px; background: var(--red); }
 .price .btn { margin-top: auto; }
+
+/* что входит в каждый сеанс */
+.included {
+  border: 1px solid var(--line);
+  background: var(--bg-2);
+  padding: 22px 20px;
+}
+.included__title { font: 600 20px/1.2 var(--f-display); text-transform: uppercase; letter-spacing: .04em; margin-bottom: 14px; }
+.included__list { display: grid; gap: 10px; }
+.included__list li { position: relative; padding-left: 28px; color: var(--muted); font-size: 15px; }
+.included__list li::before {
+  content: ""; position: absolute; left: 0; top: .2em; width: 16px; height: 16px;
+  background: no-repeat center / contain url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23ff3a2f' stroke-width='3'%3E%3Cpath d='M4 12.5l5 5L20 6.5'/%3E%3C/svg%3E");
+}
+.included__list b { color: var(--ink); }
 
 /* ---------- 6. Gallery ---------- */
 .gallery__grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
@@ -567,6 +597,12 @@ body.no-scroll { overflow: hidden; }
   background: #110f17;
   overflow: hidden;
 }
+.map iframe {
+  display: block; width: 100%; height: 100%; border: 0;
+  filter: invert(.92) hue-rotate(180deg) saturate(.7) brightness(.95) contrast(.95);
+}
+.contacts__addr { font-style: normal; }
+.dock__price b { color: var(--ink); }
 .map svg { width: 100%; height: 100%; }
 .map__grid path { stroke: rgba(255,255,255,.07); stroke-width: 1; fill: none; }
 .map__grid .map__road { stroke: rgba(139,92,246,.35); stroke-width: 6; }
@@ -673,6 +709,8 @@ body.no-scroll { overflow: hidden; }
   .facts { grid-template-columns: repeat(4, 1fr); }
   .formats__grid,
   .reviews__grid { grid-template-columns: repeat(3, 1fr); }
+  .prices__grid { grid-template-columns: repeat(2, 1fr); }
+  .included__list { grid-template-columns: repeat(2, 1fr); column-gap: 24px; }
   .gallery__grid { grid-template-columns: repeat(3, 1fr); }
   .shot--main { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
   .header__cta { display: inline-flex; }
@@ -747,7 +785,8 @@ body.no-scroll { overflow: hidden; }
 
   .prices__grid { grid-template-columns: repeat(3, 1fr); align-items: stretch; }
   .price { padding: 32px 28px; }
-  .price--accent { transform: translateY(-12px); }
+  .included { padding: 28px; display: grid; grid-template-columns: 220px 1fr; gap: 24px; align-items: start; }
+  .included__list { grid-template-columns: repeat(3, 1fr); }
 
   .gallery__grid { grid-template-columns: repeat(4, 1fr); grid-auto-rows: 260px; }
   .shot { aspect-ratio: auto; }
