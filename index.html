@@ -50,15 +50,16 @@
     },
     "geo": { "@type": "GeoCoordinates", "latitude": 43.238677, "longitude": 76.952003 },
     "hasMap": "https://2gis.kz/almaty/firm/70000001118061201",
-    "priceRange": "12 900 – 59 900 ₸",
+    "priceRange": "12 900 – 99 000 ₸",
     "currenciesAccepted": "KZT",
     "makesOffer": [
       { "@type": "Offer", "name": "После расставания — 20 минут, 15 бутылок", "price": "12900", "priceCurrency": "KZT" },
-      { "@type": "Offer", "name": "Разрушительное свидание — 30 минут, 30 бутылок", "price": "14900", "priceCurrency": "KZT" },
+      { "@type": "Offer", "name": "Разрушительное свидание — 30 минут, 30 бутылок, 1–2 гостя", "price": "19900", "priceCurrency": "KZT" },
       { "@type": "Offer", "name": "Выгорание — 30 минут, 40 предметов", "price": "22900", "priceCurrency": "KZT" },
       { "@type": "Offer", "name": "Последняя капля — 30 минут, 55 предметов", "price": "29900", "priceCurrency": "KZT" },
       { "@type": "Offer", "name": "Всё достало — 40 минут, 75 предметов", "price": "39900", "priceCurrency": "KZT" },
-      { "@type": "Offer", "name": "Полный разнос — 45 минут, 95 предметов", "price": "59900", "priceCurrency": "KZT" }
+      { "@type": "Offer", "name": "Полный разнос — 45 минут, 95 предметов", "price": "59900", "priceCurrency": "KZT" },
+      { "@type": "Offer", "name": "Апокалипсис (VIP) — 120 предметов, до 5 гостей, свой след на стене", "price": "99000", "priceCurrency": "KZT" }
     ]
   }
   </script>
@@ -74,7 +75,7 @@
       { "@type": "Question", "name": "Можно включить свою музыку?",
         "acceptedAnswer": { "@type": "Answer", "text": "Да, свой плейлист можно подключить через Bluetooth." } },
       { "@type": "Question", "name": "Сколько стоит комната ярости в Алматы?",
-        "acceptedAnswer": { "@type": "Answer", "text": "Цена указана за сеанс: от 12 900 ₸ за 20 минут до 59 900 ₸ за 45 минут." } }
+        "acceptedAnswer": { "@type": "Answer", "text": "Цена указана за сеанс: от 12 900 ₸ за 20 минут до 99 000 ₸ за VIP-тариф «Апокалипсис» на компанию до 5 человек. Сумму можно разделить на всех гостей." } }
     ]
   }
   </script>
@@ -158,7 +159,7 @@
         <ul class="facts" aria-label="Коротко о посещении">
           <li><b>Сеанс</b> 20–60 мин</li>
           <li><b>Цена</b> от 12 900 ₸ за сеанс</li>
-          <li><b>Гостей</b> от 1 до <span class="ph">[N]</span></li>
+          <li><b>Гостей</b> от 1 до 5</li>
           <li><b>Включено</b> инструктаж и экипировка</li>
         </ul>
       </div>
@@ -289,17 +290,17 @@
           <li class="format reveal">
             <h3>Соло</h3>
             <p>Когда день хочется закрыть наедине с собой. Самый короткий сеанс — 20 минут.</p>
-            <span class="format__meta">1 гость · от 12 900 ₸</span>
+            <span class="format__meta">1 гость · от 12 900 ₸ за сеанс</span>
           </li>
           <li class="format reveal">
             <h3>Вдвоём</h3>
             <p>Свидание, которое запомнится не очередным кафе. Для пары есть тариф «Разрушительное свидание».</p>
-            <span class="format__meta">2 гостя · от 14 900 ₸</span>
+            <span class="format__meta">2 гостя · от 19 900 ₸ за сеанс</span>
           </li>
           <li class="format reveal">
             <h3>Компания</h3>
-            <p>День рождения, тимбилдинг или «мы просто давно не виделись».</p>
-            <span class="format__meta">до <span class="ph">[N]</span> гостей · <span class="ph">[ЦЕНА ДЛЯ КОМПАНИИ]</span></span>
+            <p>День рождения, тимбилдинг или «мы просто давно не виделись». До 5 человек — в VIP-тарифе «Апокалипсис».</p>
+            <span class="format__meta">3–5 гостей · от 29 900 ₸ за сеанс</span>
           </li>
         </ul>
       </div>
@@ -313,91 +314,150 @@
         <p class="note">Цена указана за сеанс.</p>
 
         <div class="prices__grid">
-          <article class="price reveal" style="--c:#ff3a2f">
+          <article class="price reveal" style="--c:#ff3a2f" data-tariff="После расставания" data-price="12900" data-guests="1">
             <h3 class="price__name">После расставания</h3>
             <p class="price__value">12 900 <span class="cur">₸</span> <span class="per">за сеанс</span></p>
             <dl class="price__meta">
               <div><dt>Время</dt><dd>20 мин</dd></div>
               <div><dt>Разбить</dt><dd>15 бутылок</dd></div>
+              <div><dt>Гостей</dt><dd>1</dd></div>
             </dl>
             <ul class="price__list">
+              <li>Инструктаж</li>
               <li>Защитная экипировка</li>
             </ul>
-            <a class="btn btn--ghost btn--block" href="#booking" data-tariff="После расставания">Выбрать</a>
+            <a class="btn btn--ghost btn--block" href="#booking" data-pick="После расставания">Выбрать</a>
           </article>
 
-          <article class="price reveal" style="--c:#ff3d8b">
+          <article class="price reveal" style="--c:#ff3d8b" data-tariff="Разрушительное свидание" data-price="19900" data-guests="2">
             <h3 class="price__name">Разрушительное свидание</h3>
-            <p class="price__value">14 900 <span class="cur">₸</span> <span class="per">за сеанс</span></p>
+            <p class="price__value">19 900 <span class="cur">₸</span> <span class="per">за сеанс</span></p>
             <dl class="price__meta">
               <div><dt>Время</dt><dd>30 мин</dd></div>
               <div><dt>Разбить</dt><dd>30 бутылок</dd></div>
+              <div><dt>Гостей</dt><dd>1–2</dd></div>
             </dl>
             <ul class="price__list">
+              <li>Инструктаж</li>
               <li>Защитная экипировка</li>
             </ul>
-            <a class="btn btn--ghost btn--block" href="#booking" data-tariff="Разрушительное свидание">Выбрать</a>
+            <a class="btn btn--ghost btn--block" href="#booking" data-pick="Разрушительное свидание">Выбрать</a>
           </article>
 
-          <article class="price reveal" style="--c:#ffc21a">
+          <article class="price reveal" style="--c:#ffc21a" data-tariff="Выгорание" data-price="22900" data-guests="2">
             <h3 class="price__name">Выгорание</h3>
             <p class="price__value">22 900 <span class="cur">₸</span> <span class="per">за сеанс</span></p>
             <dl class="price__meta">
               <div><dt>Время</dt><dd>30 мин</dd></div>
               <div><dt>Разбить</dt><dd>40 предметов</dd></div>
+              <div><dt>Гостей</dt><dd>1–2</dd></div>
             </dl>
             <ul class="price__list">
+              <li>Бутылки и ящики</li>
               <li>Мелкая техника (например, принтер)</li>
+              <li>Инструктаж</li>
               <li>Защитная экипировка</li>
             </ul>
-            <a class="btn btn--ghost btn--block" href="#booking" data-tariff="Выгорание">Выбрать</a>
+            <a class="btn btn--ghost btn--block" href="#booking" data-pick="Выгорание">Выбрать</a>
           </article>
 
-          <article class="price reveal" style="--c:#ff8a1f">
+          <article class="price reveal" style="--c:#ff8a1f" data-tariff="Последняя капля" data-price="29900" data-guests="3">
             <h3 class="price__name">Последняя капля</h3>
             <p class="price__value">29 900 <span class="cur">₸</span> <span class="per">за сеанс</span></p>
             <dl class="price__meta">
               <div><dt>Время</dt><dd>30 мин</dd></div>
               <div><dt>Разбить</dt><dd>55 предметов</dd></div>
+              <div><dt>Гостей</dt><dd>1–3</dd></div>
             </dl>
             <ul class="price__list">
+              <li>Бутылки и ящики</li>
               <li>Бытовая и офисная техника</li>
+              <li>Инструктаж</li>
               <li>Защитная экипировка</li>
             </ul>
-            <a class="btn btn--ghost btn--block" href="#booking" data-tariff="Последняя капля">Выбрать</a>
+            <a class="btn btn--ghost btn--block" href="#booking" data-pick="Последняя капля">Выбрать</a>
           </article>
 
-          <article class="price reveal" style="--c:#ff3a2f">
+          <article class="price reveal" style="--c:#ff3a2f" data-tariff="Всё достало" data-price="39900" data-guests="3">
             <h3 class="price__name">Всё достало</h3>
             <p class="price__value">39 900 <span class="cur">₸</span> <span class="per">за сеанс</span></p>
             <dl class="price__meta">
               <div><dt>Время</dt><dd>40 мин</dd></div>
               <div><dt>Разбить</dt><dd>75 предметов</dd></div>
+              <div><dt>Гостей</dt><dd>1–3</dd></div>
             </dl>
             <ul class="price__list">
+              <li>Бутылки и ящики</li>
               <li>Телевизор или техника</li>
+              <li>Инструктаж</li>
               <li>Защитная экипировка</li>
             </ul>
-            <a class="btn btn--ghost btn--block" href="#booking" data-tariff="Всё достало">Выбрать</a>
+            <a class="btn btn--ghost btn--block" href="#booking" data-pick="Всё достало">Выбрать</a>
           </article>
 
-          <article class="price price--max reveal" style="--c:#f4f1f8">
+          <article class="price price--max reveal" style="--c:#f4f1f8" data-tariff="Полный разнос" data-price="59900" data-guests="3">
             <h3 class="price__name">Полный разнос</h3>
             <p class="price__value">59 900 <span class="cur">₸</span> <span class="per">за сеанс</span></p>
             <dl class="price__meta">
               <div><dt>Время</dt><dd>45 мин</dd></div>
               <div><dt>Разбить</dt><dd>95 предметов</dd></div>
+              <div><dt>Гостей</dt><dd>1–3</dd></div>
             </dl>
             <ul class="price__list">
+              <li>Бутылки и ящики</li>
               <li>Телевизор, монитор или мебель на разрушение</li>
               <li>Техника</li>
+              <li>Инструктаж</li>
               <li>Защитная экипировка</li>
             </ul>
-            <a class="btn btn--primary btn--block" href="#booking" data-tariff="Полный разнос">Выбрать</a>
+            <a class="btn btn--ghost btn--block" href="#booking" data-pick="Полный разнос">Выбрать</a>
+          </article>
+
+          <article class="price price--vip reveal" style="--c:#ff3a2f" data-tariff="Апокалипсис" data-price="99000" data-guests="5">
+            <span class="price__badge">VIP</span>
+            <h3 class="price__name">Апокалипсис</h3>
+            <p class="price__value">99 000 <span class="cur">₸</span> <span class="per">за сеанс</span></p>
+            <dl class="price__meta">
+              <div><dt>Время</dt><dd><span class="ph">[ВРЕМЯ]</span></dd></div>
+              <div><dt>Разбить</dt><dd>120 предметов</dd></div>
+              <div><dt>Гостей</dt><dd>1–5</dd></div>
+            </dl>
+            <ul class="price__list">
+              <li><b>Всё из «Полного разноса»</b>: бутылки и ящики, телевизор, монитор или мебель, техника</li>
+              <li><b>Оставь свой след на стене</b> комнаты</li>
+              <li>Инструктаж</li>
+              <li>Защитная экипировка</li>
+            </ul>
+            <a class="btn btn--primary btn--block" href="#booking" data-pick="Апокалипсис">Выбрать</a>
           </article>
         </div>
 
-        <div class="included reveal">
+        <!-- Калькулятор: тарифы и лимиты гостей берутся из карточек выше (data-price, data-guests) -->
+        <div class="calc reveal" id="calc">
+          <div class="calc__head">
+            <p class="eyebrow"><span class="code">SPLIT</span> Калькулятор</p>
+            <h3 class="calc__title">Делим на компанию</h3>
+            <p class="calc__lead">Выбери тариф и сколько вас — покажем, сколько выйдет с каждого.</p>
+          </div>
+          <div class="calc__controls">
+            <div class="field">
+              <label for="calc-tariff">Тариф</label>
+              <select id="calc-tariff"></select>
+            </div>
+            <fieldset class="calc__guests">
+              <legend>Гостей</legend>
+              <div class="seg" id="calc-guests"></div>
+            </fieldset>
+          </div>
+          <div class="calc__result" aria-live="polite">
+            <p class="calc__per"><span id="calc-per">—</span> <small>₸ с человека</small></p>
+            <p class="calc__total" id="calc-total"></p>
+            <a class="btn btn--primary btn--lg btn--block" href="#booking" id="calc-book">Забронировать этот вариант</a>
+          </div>
+          <p class="calc__note">Сумма за сеанс делится поровну и округляется вверх до тенге.</p>
+        </div>
+
+<div class="included reveal">
           <h3 class="included__title">В каждом сеансе</h3>
           <ul class="included__list">
             <li><b>Инструктаж</b> по технике безопасности перед началом</li>
@@ -497,7 +557,7 @@
           </details>
           <details class="qa">
             <summary>Можно прийти компанией?</summary>
-            <p><span class="ph">[ОТВЕТ: сколько человек одновременно в комнате, есть ли зона ожидания]</span></p>
+            <p>Да. «Разрушительное свидание» и «Выгорание» — до 2 гостей, «Последняя капля», «Всё достало» и «Полный разнос» — до 3, VIP-тариф «Апокалипсис» — до 5. Сколько выйдет с каждого, покажет калькулятор в блоке цен.</p>
           </details>
           <details class="qa">
             <summary>Можно снимать на телефон?</summary>
@@ -597,14 +657,6 @@
           </div>
           <div class="field-row">
             <div class="field">
-              <label for="f-format">Формат</label>
-              <select id="f-format" name="format">
-                <option>Соло</option>
-                <option>Вдвоём</option>
-                <option>Компания</option>
-              </select>
-            </div>
-            <div class="field">
               <label for="f-tariff">Тариф</label>
               <select id="f-tariff" name="tariff">
                 <option value="">Не выбран</option>
@@ -614,6 +666,17 @@
                 <option>Последняя капля</option>
                 <option>Всё достало</option>
                 <option>Полный разнос</option>
+                <option>Апокалипсис</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="f-guests">Гостей</label>
+              <select id="f-guests" name="guests">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
               </select>
             </div>
           </div>

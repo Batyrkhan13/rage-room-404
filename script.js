@@ -129,11 +129,71 @@ const BOOKING_CONFIG = {
     new IntersectionObserver(([en]) => { bookingVisible = en.isIntersecting; update(); }, { threshold: 0.05 }).observe(booking);
   }
 
-  /* ---------- Кнопки тарифов подставляют выбор в форму ---------- */
+  /* ---------- Тарифы: данные берутся из карточек (data-tariff, data-price, data-guests) ---------- */
   const tariffSelect = document.getElementById('f-tariff');
-  document.querySelectorAll('[data-tariff]').forEach((btn) => {
-    btn.addEventListener('click', () => { tariffSelect.value = btn.dataset.tariff; });
+  const guestsSelect = document.getElementById('f-guests');
+  const fmt = (n) => n.toLocaleString('ru-RU');
+  const guestWord = (n) => (n === 1 ? 'гость' : n < 5 ? 'гостя' : 'гостей');
+  const tariffs = [...document.querySelectorAll('.price[data-tariff]')].map((el) => ({
+    el,
+    name: el.dataset.tariff,
+    price: Number(el.dataset.price),
+    max: Number(el.dataset.guests),
+  }));
+
+  // строка «от N ₸ с человека» в карточках, где можно прийти вдвоём и больше
+  tariffs.forEach((t) => {
+    if (t.max < 2) return;
+    const line = document.createElement('p');
+    line.className = 'price__split';
+    line.innerHTML = `от <b>${fmt(Math.ceil(t.price / t.max))} ₸</b> с человека, если вас ${t.max}`;
+    t.el.querySelector('.price__value').after(line);
   });
+
+  const fillForm = (name, guests) => {
+    tariffSelect.value = name;
+    if (guests) guestsSelect.value = String(guests);
+  };
+  document.querySelectorAll('[data-pick]').forEach((btn) => {
+    btn.addEventListener('click', () => fillForm(btn.dataset.pick));
+  });
+
+  /* ---------- Калькулятор деления цены ---------- */
+  const calcTariff = document.getElementById('calc-tariff');
+  const calcGuests = document.getElementById('calc-guests');
+  if (calcTariff && tariffs.length) {
+    const perOut = document.getElementById('calc-per');
+    const totalOut = document.getElementById('calc-total');
+    const calcBook = document.getElementById('calc-book');
+    let guests = 3;
+
+    calcTariff.innerHTML = tariffs
+      .map((t, i) => `<option value="${i}">${t.name}</option>`)
+      .join('');
+    calcTariff.value = String(Math.max(0, tariffs.findIndex((t) => t.name === 'Последняя капля')));
+
+    const render = () => {
+      const t = tariffs[Number(calcTariff.value)];
+      guests = Math.min(Math.max(guests, 1), t.max);
+      calcGuests.innerHTML = Array.from({ length: 5 }, (_, i) => {
+        const n = i + 1;
+        const off = n > t.max;
+        return `<label class="seg__item${off ? ' is-off' : ''}">
+          <input type="radio" name="calc-guests" value="${n}" ${n === guests ? 'checked' : ''} ${off ? 'disabled' : ''}>
+          <span>${n}</span></label>`;
+      }).join('');
+      perOut.textContent = fmt(Math.ceil(t.price / guests));
+      totalOut.textContent = `${fmt(t.price)} ₸ за сеанс · ${guests} ${guestWord(guests)}`
+        + (t.max < 5 ? ` · в этом тарифе до ${t.max}` : '');
+    };
+
+    calcTariff.addEventListener('change', render);
+    calcGuests.addEventListener('change', (e) => {
+      if (e.target.name === 'calc-guests') { guests = Number(e.target.value); render(); }
+    });
+    calcBook.addEventListener('click', () => fillForm(tariffs[Number(calcTariff.value)].name, guests));
+    render();
+  }
 
   /* ---------- Дата: не раньше сегодняшней ---------- */
   const dateInput = document.getElementById('f-date');
@@ -179,8 +239,8 @@ const BOOKING_CONFIG = {
       `Имя: ${d.name}`,
       `Телефон: ${d.phone}`,
       `Дата: ${d.date}${d.time ? `, ${d.time}` : ''}`,
-      `Формат: ${d.format}`,
       d.tariff ? `Тариф: ${d.tariff}` : '',
+      `Гостей: ${d.guests}`,
       d.comment ? `Комментарий: ${d.comment}` : '',
     ].filter(Boolean).join('\n');
 
