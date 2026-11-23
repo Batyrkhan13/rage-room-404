@@ -1,0 +1,13 @@
+# Локальные настройки редактора и Claude
+.claude/
+.vscode/
+.idea/
+
+# Системные файлы
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Зависимости и временные файлы
+node_modules/
+*.log
