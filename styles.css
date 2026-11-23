@@ -577,6 +577,10 @@ body.no-scroll { overflow: hidden; }
 .feature__title { font: 700 clamp(26px, 6.5vw, 40px)/1.05 var(--f-display); text-transform: uppercase; margin-bottom: 12px; }
 .feature__text p:not(.eyebrow) { color: var(--muted); }
 .feature__credit { margin-top: 14px; font-size: 14px; }
+/* репортаж внутри блока «Безопасность» — визуальная пауза среди текста */
+.feature--side { margin-top: 24px; }
+.feature--side .feature__video { max-width: 320px; }
+.feature--side .feature__title { font-size: clamp(22px, 5.5vw, 28px); }
 .feature__credit a { color: var(--ink); font-weight: 700; text-decoration-color: var(--red); text-underline-offset: 3px; }
 .shot figcaption {
   position: absolute; left: 0; bottom: 0;
@@ -773,6 +777,8 @@ body.no-scroll { overflow: hidden; }
   .reviews__grid { grid-template-columns: repeat(3, 1fr); }
   .prices__grid { grid-template-columns: repeat(2, 1fr); }
   .price--vip { grid-column: 1 / -1; }
+  .feature--side { grid-template-columns: 200px 1fr; gap: 24px; align-items: center; }
+  .feature--side .feature__video { margin: 0; }
   .included__list { grid-template-columns: repeat(2, 1fr); column-gap: 24px; }
   .gallery__grid { grid-template-columns: repeat(3, 1fr); }
   .shot--main { grid-column: span 2; grid-row: span 2; aspect-ratio: auto; }
@@ -888,7 +894,7 @@ body.no-scroll { overflow: hidden; }
   .video { margin-left: auto; }
 
   .faq__wrap { grid-template-columns: .9fr 1.1fr; gap: 72px; align-items: start; }
-  .safety { position: sticky; top: calc(var(--header-h) + 24px); }
+  .feature--side { grid-template-columns: 200px 1fr; gap: 24px; padding: 16px; }
 
   .contacts__wrap { grid-template-columns: 1fr 1fr; gap: 56px; align-items: center; }
   .map { aspect-ratio: 1; }
